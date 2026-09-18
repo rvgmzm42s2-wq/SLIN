@@ -1,1 +1,11 @@
-{"version":"0.1.0","name":"SLIN","tone":{"profile":"direct","concise":true,"adaptive":true},"diagnostics":{"memory_warning_percent":85,"disk_warning_percent":90}}
+{
+  "version":"0.4.0",
+  "name":"SLIN",
+  "mode":"native",
+  "platform":"windows",
+  "external_ai":false,
+  "tone":{"profile":"direct","concise":true,"adaptive":true},
+  "memory":{"persistent":true,"local_only":true},
+  "learning":{"enabled":true,"local_only":true},
+  "diagnostics":{"memory_warning_percent":85,"disk_warning_percent":90}
+}
