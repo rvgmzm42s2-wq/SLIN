@@ -1,4 +1,5 @@
-function Invoke-SLINDecisionLoop([hashtable]$Context) {
-  $r=Invoke-SLINReasoning $Context
-  [pscustomobject]@{timestamp=(Get-Date).ToUniversalTime().ToString('o'); reasoning=$r; decision='observe'; actions=@(); confidence=1.0}
+function Invoke-SLINDecisionLoop {
+  param([object]$Context)
+  $reason=Invoke-SLINReasoning $Context
+  [pscustomobject]@{decision='observe';actions=@();confidence=$reason.confidence;reasoning=$reason;timestamp=(Get-Date).ToString('o')}
 }
