@@ -1,5 +1,13 @@
 # SLIN USB Build
 
-Copy the entire repository folder to a USB drive. On Windows run `USB-START.cmd` to launch the status screen or `SLIN.cmd help` for commands. `install.ps1` installs a local copy without permanently changing PowerShell execution policy.
+The active target is Windows.
 
-Sensor availability depends on Windows hardware providers. Fan RPM and detailed temperatures may require a supported hardware-monitor provider in a later adapter.
+Copy the entire **SLIN** repository folder to a USB drive. On a Windows PC, double-click **SLIN-APP.cmd** to launch the SLIN desktop interface.
+
+The launcher uses a process-scoped PowerShell execution-policy bypass; it does not permanently change the Windows execution policy.
+
+For command-line access, run **SLIN.cmd help**.
+
+The USB copy is a portable application/project folder, not a bootable operating system.
+
+Hardware sensor availability depends on Windows support and available providers. Fan RPM and detailed temperatures may be unavailable on some systems.
