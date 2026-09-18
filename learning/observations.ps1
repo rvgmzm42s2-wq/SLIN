@@ -1,0 +1,1 @@
+function Add-SLINObservation($Observation){[ordered]@{timestamp=(Get-Date).ToUniversalTime().ToString('o');observation=$Observation}|ConvertTo-Json -Depth 10|Add-Content (Join-Path $script:SLINRoot 'data/observations.jsonl')}
