@@ -1,0 +1,1 @@
+function Get-SLINBatteryPerformance{$b=@(Get-CimInstance Win32_Battery -EA SilentlyContinue);if(!$b){return [pscustomobject]@{available=$false;batteries=@()}};[pscustomobject]@{available=$true;batteries=@($b|select Name,BatteryStatus,EstimatedChargeRemaining,EstimatedRunTime)}}
