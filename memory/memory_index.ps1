@@ -1,0 +1,1 @@
+function Search-SLINMemory([string]$Query){foreach($n in @('long-term.jsonl','episodes.jsonl','semantic.jsonl')){$p=Join-Path $script:SLINRoot ('data/'+$n);if(Test-Path $p){Get-Content $p|?{$_ -match [regex]::Escape($Query)}|%{$_|ConvertFrom-Json}}}}
