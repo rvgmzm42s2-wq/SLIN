@@ -1,0 +1,1 @@
+function Add-SLINEpisode([string]$Type,[object]$Data){$p=Join-Path $script:SLINRoot 'data/episodes.jsonl';[ordered]@{timestamp=(Get-Date).ToUniversalTime().ToString('o');type=$Type;data=$Data}|ConvertTo-Json -Depth 15|Add-Content $p}
