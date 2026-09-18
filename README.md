@@ -32,4 +32,4 @@ Or install to your user profile with install.ps1, which creates SLIN.cmd.
 - version
 - help
 
-User memory and runtime data are excluded from Git by default.
+User memory and runtime data are excluded from Git by default.`n`n'performance/hardware_monitor.ps1' provides a safe provider abstraction for detailed thermal/fan telemetry without claiming unavailable sensor data.`n
