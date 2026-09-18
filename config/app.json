@@ -1,10 +1,10 @@
 {
   "name":"SLIN",
-  "version":"0.3.0",
+  "version":"0.4.0",
   "mode":"local-first",
-  "interface":"terminal-chat",
+  "interface":"desktop-or-terminal-chat",
   "memory":{"enabled":true,"localOnly":true},
   "diagnostics":{"enabled":true},
   "toneRecognition":{"enabled":true},
-  "execution":{"dryRunPreferred":true}
+  "execution":{"dryRunPreferred":true,"safeMode":true}
 }
