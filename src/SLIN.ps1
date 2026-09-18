@@ -27,10 +27,11 @@ switch($Command.ToLowerInvariant()){
 'snapshot'{New-SLINRecoverySnapshot}
 'permissions'{Get-SLINPermissions}
 'selfstate'{Get-SLINSelfState}
+'patterns'{Get-SLINLearnedPatterns|Format-Table -AutoSize}
 'help'{Write-Host 'SLIN: status diagnose cpu gpu memory storage thermal fans battery sensors tone remember recall beliefs contradictions health snapshot permissions selfstate patterns help shell chat app version'}
 'shell'{Start-SLINTerminal}
 'chat'{Start-SLINChat}
 'app'{Start-SLINApp}
-'version'{Write-Host 'SLIN 0.4.0'}{Write-Host 'SLIN 0.3.0'}
+'version'{Write-Host 'SLIN 0.4.0'}
 default{Write-Error "Unknown command '$Command'. Run: SLIN help"}
 }
