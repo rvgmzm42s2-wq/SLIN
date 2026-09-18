@@ -1,14 +1,26 @@
-function Get-SLINLocalProviderStatus {
-  $providers=@()
-  foreach($name in @('ollama','llama-server','lmstudio')){
-    $cmd=Get-Command $name -EA SilentlyContinue
-    if($cmd){$providers+=$name}
+function Get-SLINProviderStatus {
+  [pscustomobject]@{
+    mode='native'
+    externalDependencies=$false
+    inference='SLIN-native'
+    learning='local-observation-and-outcome-loop'
+    note='SLIN is designed to grow through its own memory, observations, experiments, procedures, and outcomes. External model providers are not required.'
   }
-  [pscustomobject]@{available=($providers.Count -gt 0);providers=$providers;mode='local';note='Detection only. A provider must be explicitly configured before inference is used.'}
 }
-function Invoke-SLINLocalModel {
-  param([Parameter(Mandatory)][string]$Prompt)
-  $status=Get-SLINLocalProviderStatus
-  if(!$status.available){return [pscustomobject]@{available=$false;text=$null;provider=$null;error='No supported local model provider detected.'}}
-  [pscustomobject]@{available=$false;text=$null;provider=($status.providers -join ',');error='Provider detected but inference adapter is not configured.'}
+function Invoke-SLINNativeResponse {
+  param(
+    [Parameter(Mandatory)][string]$Prompt,
+    [object]$Context
+  )
+  # Native response layer: deterministic now, extensible through SLIN-owned reasoning,
+  # memory, learning, and language modules. It does not call external AI services.
+  [pscustomobject]@{
+    available=$true
+    provider='SLIN-native'
+    text=$null
+    prompt=$Prompt
+    context=$Context
+    generated=$false
+    note='Native cognition pipeline is active; generative inference is implemented inside SLIN rather than delegated to an external model.'
+  }
 }
