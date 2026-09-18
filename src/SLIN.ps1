@@ -30,8 +30,9 @@ switch($Command.ToLowerInvariant()){
 'snapshot'{New-SLINRecoverySnapshot}
 'permissions'{Get-SLINPermissions}
 'selfstate'{Get-SLINSelfState}
-'help'{Write-Host 'SLIN: status diagnose cpu gpu memory storage thermal fans battery sensors tone remember recall beliefs contradictions health snapshot permissions selfstate help shell version'}
+'help'{Write-Host 'SLIN: status diagnose cpu gpu memory storage thermal fans battery sensors tone remember recall beliefs contradictions health snapshot permissions selfstate help shell chat version'}
 'shell'{Start-SLINTerminal}
+'chat'{Start-SLINChat}
 'version'{Write-Host 'SLIN 0.2.0'}
 default{Write-Error "Unknown command '$Command'. Run: SLIN help"}
 }
