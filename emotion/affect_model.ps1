@@ -1,5 +1,8 @@
-function Get-SLINAffect([string]$Tone) {
-  $v=@{calm=0.1;frustrated=-0.6;excited=0.7;serious=0;joKing=0;uncertain=-0.1;urgent=-0.1;affectionate=0.8;neutral=0}
-  $ar=@{calm=0.1;frustrated=0.8;excited=0.8;serious=0.5;joking=0.7;uncertain=0.4;urgent=1;affectionate=0.5;neutral=0}
-  [pscustomobject]@{tone=$Tone;valence=($v[$Tone] ?? 0);arousal=($ar[$Tone] ?? 0);source='heuristic'}
+function Get-SLINAffect([string]$Tone){
+  $v=@{calm=.1;frustrated=-.6;excited=.7;serious=0;joking=.2;uncertain=-.1;urgent=-.1;affectionate=.8;neutral=0}
+  $a=@{calm=.1;frustrated=.8;excited=.8;serious=.5;joking=.7;uncertain=.4;urgent=1;affectionate=.5;neutral=0}
+  $val=0;$aro=0
+  if($v.ContainsKey($Tone)){$val=$v[$Tone]}
+  if($a.ContainsKey($Tone)){$aro=$a[$Tone]}
+  [pscustomobject]@{tone=$Tone;valence=$val;arousal=$aro;source='heuristic'}
 }
