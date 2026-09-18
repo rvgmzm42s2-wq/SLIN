@@ -27,7 +27,7 @@ switch($Command.ToLowerInvariant()){
 'snapshot'{New-SLINRecoverySnapshot}
 'permissions'{Get-SLINPermissions}
 'selfstate'{Get-SLINSelfState}
-'help'{Write-Host 'SLIN: status diagnose cpu gpu memory storage thermal fans battery sensors tone remember recall beliefs contradictions health snapshot permissions selfstate help shell chat version'}
+'help'{Write-Host 'SLIN: status diagnose cpu gpu memory storage thermal fans battery sensors tone remember recall beliefs contradictions health snapshot permissions selfstate patterns help shell chat app version'}
 'shell'{Start-SLINTerminal}
 'chat'{Start-SLINChat}
 'app'{Start-SLINApp}
