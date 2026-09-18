@@ -1,13 +1,7 @@
-# SLIN Cross-Platform Interface
+# SLIN Windows Interface
 
-The Windows runtime currently uses PowerShell and WPF.
+SLIN is currently a Windows-native system.
 
-The portable SLIN core is designed to share its data and architecture with a macOS runtime. The macOS interface should provide:
-- one-launch access
-- local conversation
-- persistent memory
-- native cognition and learning
-- diagnostics where macOS permissions and hardware APIs allow
-- USB-portable project/data layout
+The primary interface is the Windows desktop/terminal launcher. The Windows build is the active target for development, testing, diagnostics, persistent memory, native cognition, learning, security, and USB portability.
 
-The macOS runtime must not depend on an external AI provider.
+No macOS runtime is part of the current build target.
