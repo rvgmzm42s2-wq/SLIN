@@ -1,3 +1,3 @@
-function Get-SLINSelfState {
-  [pscustomobject]@{name='SLIN'; mode='local'; status='running'; timestamp=(Get-Date).ToUniversalTime().ToString('o')}
-}
+$script:SLINSelfState=[ordered]@{name='SLIN';mode='native';status='running';started=(Get-Date).ToUniversalTime().ToString('o');turns=0;lastTone='neutral';lastAction='none'}
+function Get-SLINSelfState { [pscustomobject]$script:SLINSelfState }
+function Update-SLINSelfState { param([string]$Tone,[string]$Action='respond');$script:SLINSelfState.turns++;$script:SLINSelfState.lastTone=$Tone;$script:SLINSelfState.lastAction=$Action;$script:SLINSelfState.updated=(Get-Date).ToUniversalTime().ToString('o');[pscustomobject]$script:SLINSelfState }
