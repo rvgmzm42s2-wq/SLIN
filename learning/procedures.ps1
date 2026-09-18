@@ -1,0 +1,1 @@
+function Add-SLINProcedure([string]$Name,[string[]]$Steps){[ordered]@{name=$Name;steps=$Steps;timestamp=(Get-Date).ToUniversalTime().ToString('o')}|ConvertTo-Json -Depth 15|Add-Content (Join-Path $script:SLINRoot 'data/procedures.jsonl')}
