@@ -1,0 +1,1 @@
+function Get-SLINCPUPerformance{$p=Get-Counter '\Processor(_Total)\% Processor Time' -EA SilentlyContinue;[pscustomobject]@{usagePercent=if($p){[math]::Round($p.CounterSamples[0].CookedValue,1)}else{$null};processors=@(Get-CimInstance Win32_Processor|select Name,NumberOfLogicalProcessors,MaxClockSpeed)}}
