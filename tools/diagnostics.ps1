@@ -1,0 +1,1 @@
+function Invoke-SLINDiagnostics{Get-SLINSystemPerception;Get-SLINHardwarePerception;Get-SLINCPUPerformance;Get-SLINMemoryPerformance;Get-SLINStoragePerformance;Get-SLINThermalPerformance;Get-SLINFanPerformance;Get-SLINBatteryPerformance}
