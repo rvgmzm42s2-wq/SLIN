@@ -1,0 +1,1 @@
+function Add-SLINSemanticFact([string]$Subject,[string]$Predicate,[object]$Object,[double]$Confidence=.5){[ordered]@{subject=$Subject;predicate=$Predicate;object=$Object;confidence=$Confidence;timestamp=(Get-Date).ToUniversalTime().ToString('o')}|ConvertTo-Json -Depth 10|Add-Content (Join-Path $script:SLINRoot 'data/semantic.jsonl')}
