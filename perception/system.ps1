@@ -1,0 +1,1 @@
+function Get-SLINSystemPerception{$os=Get-CimInstance Win32_OperatingSystem;[pscustomobject]@{computer=$env:COMPUTERNAME;os=$os.Caption;version=$os.Version;build=$os.BuildNumber;uptimeHours=[math]::Round(((Get-Date)-$os.LastBootUpTime).TotalHours,2)}}
