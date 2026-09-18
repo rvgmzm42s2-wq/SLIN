@@ -4,6 +4,8 @@ $Root=Split-Path -Parent $PSScriptRoot
 foreach($dir in @('core','cognition','emotion','language','memory','perception','performance','tools','learning','security','interface')){
  Get-ChildItem (Join-Path $Root $dir) -Filter '*.ps1' -EA SilentlyContinue|Sort-Object Name|%{. $_.FullName}
 }
+Get-ChildItem (Join-Path $Root 'tools') -Filter '*.ps1' -EA SilentlyContinue|Sort-Object Name|%{. $_.FullName}
+
 Initialize-SLIN
 switch($Command.ToLowerInvariant()){
 'status'{Get-SLINSelfState|Format-List}
@@ -22,6 +24,8 @@ switch($Command.ToLowerInvariant()){
 'beliefs'{Get-SLINBeliefs}
 'contradictions'{Find-SLINContradictions (Get-SLINBeliefs)}
 'health'{Invoke-SLINDiagnostics}
+'selftest'{Invoke-SLINSelfTest|Format-List}
+'benchmark'{Invoke-SLINBenchmark|Format-List}
 'snapshot'{New-SLINRecoverySnapshot}
 'permissions'{Get-SLINPermissions}
 'selfstate'{Get-SLINSelfState}
