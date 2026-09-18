@@ -1,0 +1,1 @@
+function Get-SLINThermalPerformance{$z=@(Get-CimInstance -Namespace root/wmi -ClassName MSAcpi_ThermalZoneTemperature -EA SilentlyContinue);if(!$z){return [pscustomobject]@{available=$false;temperatures=@()}};[pscustomobject]@{available=$true;temperatures=@($z|%{[pscustomobject]@{celsius=[math]::Round($_.CurrentTemperature/10-273.15,1)}})}}
