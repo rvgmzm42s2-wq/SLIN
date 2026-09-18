@@ -1,0 +1,1 @@
+function Start-SLINTerminal{Write-Host 'SLIN local terminal. Type help or exit.';while($true){$line=Read-Host 'SLIN';if($line -eq 'exit'){break};if($line -eq 'help'){Get-Command '*-SLIN*'|sort Name|ft Name -AutoSize}else{try{Invoke-Expression $line}catch{Write-Host $_.Exception.Message}}}}
