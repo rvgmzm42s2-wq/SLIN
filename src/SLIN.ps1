@@ -25,6 +25,7 @@ switch($Command.ToLowerInvariant()){
 'contradictions'{Find-SLINContradictions (Get-SLINBeliefs)}
 'health'{Invoke-SLINDiagnostics}
 'selftest'{Invoke-SLINSelfTest|Format-List}
+'report'{Export-SLINReport|Format-List}
 'benchmark'{Invoke-SLINBenchmark|Format-List}
 'snapshot'{New-SLINRecoverySnapshot}
 'permissions'{Get-SLINPermissions}
