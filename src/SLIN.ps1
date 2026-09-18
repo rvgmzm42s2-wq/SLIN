@@ -34,6 +34,6 @@ switch($Command.ToLowerInvariant()){
 'shell'{Start-SLINTerminal}
 'chat'{Start-SLINChat}
 'app'{Start-SLINApp}
-'version'{Write-Host 'SLIN 0.2.0'}
+'version'{Write-Host 'SLIN 0.3.0'}
 default{Write-Error "Unknown command '$Command'. Run: SLIN help"}
 }
