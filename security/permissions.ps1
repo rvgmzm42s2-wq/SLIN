@@ -1,0 +1,1 @@
+function Get-SLINPermissions{[pscustomobject]@{user=$env:USERNAME;isAdministrator=([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator);executionPolicy=(Get-ExecutionPolicy -List|Out-String).Trim()}}
