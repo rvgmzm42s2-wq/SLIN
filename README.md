@@ -1,6 +1,6 @@
 # SLIN
 
-SLIN is a local-first modular personal system.
+SLIN is a native-first modular personal system designed to grow through its own memory, observations, learning, procedures, and outcomes.
 
 ## One-click access
 
@@ -8,4 +8,4 @@ On Windows, double-click **SLIN-APP.cmd** to open the complete SLIN application 
 
 The interface connects conversation, persistent memory, tone recognition, cognition, diagnostics, performance tools, learning, and security foundations.
 
-The current conversation engine is deterministic and transparent. A local model provider can be connected separately; SLIN does not silently download or execute a model.
+The current native conversation engine is deterministic and transparent. External AI providers are not required.
