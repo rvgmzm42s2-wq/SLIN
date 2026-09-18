@@ -12,7 +12,9 @@ function Invoke-SLINConversation {
     facts=$mem;goals=@();observations=@($mem)
   }
   $decision=Invoke-SLINDecisionLoop $context
-  $response="I have your message. I'm processing it through SLIN's native cognition pipeline."
+  Update-SLINSelfState $tone.tone $decision.decision | Out-Null
+  $response=Invoke-SLINNativeResponse -Text $Text -Context $context -Decision $decision
+  Update-SLINLearning -Observation @{text=$Text;tone=$tone.tone} -Outcome @{action=$decision.decision} | Out-Null
   $style=Get-SLINResponseCalibration $tone.tone
   [pscustomobject]@{text=(ConvertTo-SLINResponseStyle $response $tone.tone);tone=$tone.tone;calibration=$style;decision=$decision;context=$context}
 }
