@@ -1,0 +1,1 @@
+function New-SLINRecoverySnapshot{$src=Join-Path $script:SLINRoot 'data/state.json';$dst=Join-Path $script:SLINRoot ('runtime/state-backup-'+(Get-Date -Format 'yyyyMMdd-HHmmss')+'.json');if(Test-Path $src){Copy-Item $src $dst -Force};$dst}
