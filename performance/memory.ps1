@@ -1,0 +1,1 @@
+function Get-SLINMemoryPerformance{$o=Get-CimInstance Win32_OperatingSystem;[pscustomobject]@{totalGB=[math]::Round($o.TotalVisibleMemorySize/1MB,2);freeGB=[math]::Round($o.FreePhysicalMemory/1MB,2);usedPercent=[math]::Round((1-($o.FreePhysicalMemory/$o.TotalVisibleMemorySize))*100,1)}}
