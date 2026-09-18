@@ -1,0 +1,10 @@
+data/*
+!data/.gitkeep
+logs/*
+!logs/.gitkeep
+reports/*
+!reports/.gitkeep
+runtime/*
+!runtime/.gitkeep
+*.tmp
+*.bak
