@@ -1,0 +1,1 @@
+function Get-SLINHardwarePerception{[pscustomobject]@{cpu=@(Get-CimInstance Win32_Processor|select Name,NumberOfCores,NumberOfLogicalProcessors,MaxClockSpeed);gpu=@(Get-CimInstance Win32_VideoController|select Name,DriverVersion,AdapterRAM)}}
