@@ -1,0 +1,1 @@
+function Get-SLINStoragePerformance{Get-CimInstance Win32_LogicalDisk -Filter 'DriveType=3'|select DeviceID,FileSystem,@{n='SizeGB';e={[math]::Round($_.Size/1GB,2)}},@{n='FreeGB';e={[math]::Round($_.FreeSpace/1GB,2)}}}
