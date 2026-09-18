@@ -1,0 +1,1 @@
+function Add-SLINOutcome([string]$Experiment,[object]$Outcome){[ordered]@{timestamp=(Get-Date).ToUniversalTime().ToString('o');experiment=$Experiment;outcome=$Outcome}|ConvertTo-Json -Depth 15|Add-Content (Join-Path $script:SLINRoot 'data/outcomes.jsonl')}
