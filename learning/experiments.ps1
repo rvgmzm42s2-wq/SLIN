@@ -1,0 +1,1 @@
+function Add-SLINExperiment([string]$Name,[hashtable]$Plan){[ordered]@{timestamp=(Get-Date).ToUniversalTime().ToString('o');name=$Name;plan=$Plan}|ConvertTo-Json -Depth 15|Add-Content (Join-Path $script:SLINRoot 'data/experiments.jsonl')}
