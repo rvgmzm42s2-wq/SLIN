@@ -57,7 +57,7 @@ function Get-SLINConversationalAnswer {
     if($Reason.tone -eq 'uncertain'){return 'I hear the uncertainty. We can break it down and work from what we actually know.'}
     if($Reason.tone -eq 'urgent'){return 'Got it. I''ll keep this focused and work the problem step by step.'}
     if($Reason.tone -eq 'affectionate'){return 'I''m here with you.'}
-    if($Reason.tone -eq 'joking'){return '😂 I caught the joke. Keep going.'}
+    if($Reason.tone -eq 'joking'){return 'I caught the joke. Keep going.'}
 
     if($relevant.Count){
         $m=($relevant|Select-Object -First 1).text
