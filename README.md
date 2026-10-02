@@ -2,10 +2,28 @@
 
 SLIN is a native-first modular personal system designed to grow through its own memory, observations, learning, procedures, and outcomes.
 
-## One-click access
+## Current build
 
-On Windows, double-click **SLIN-APP.cmd** to open the complete SLIN application interface.
+The main Windows runtime is PowerShell 5.1 compatible and runs locally without an external AI provider.
 
-The interface connects conversation, persistent memory, tone recognition, cognition, diagnostics, performance tools, learning, and security foundations.
+It currently includes:
+- Local interactive chat
+- Persistent memory and recall
+- Conversation state and beliefs
+- System diagnostics and health checks
+- Sensor discovery
+- Self-tests
+- Tone configuration
+- Logging and health reports
+- Windows launcher scripts
 
-The current native conversation engine is deterministic and transparent. External AI providers are not required.
+## Run on Windows
+
+1. Download this repository as a ZIP.
+2. Extract it to a local folder.
+3. Run `install.ps1` if installation is needed.
+4. Start `SLIN-APP.cmd` or run `SLIN.cmd chat`.
+
+The runtime is intentionally transparent and deterministic. External AI providers are not required.
+
+Repository: https://github.com/rvgmzm42s2-wq/SLIN
