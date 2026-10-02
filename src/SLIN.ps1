@@ -45,7 +45,7 @@ switch($Command.ToLowerInvariant()){
     "tone"      { Get-SLINTone | Format-List }
     "log"       { Get-SLINLog | Out-Host }
     "report"    { New-SLINHealthReport }
-    "version"   { Write-Host "SLIN 0.8.0" }
+    "version"   { Write-Host "SLIN 0.9.0" }
     "help"      { Show-SLINHelp }
     default     { Write-Error "Unknown command '$Command'. Run: SLIN help" }
 }
