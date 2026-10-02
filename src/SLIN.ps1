@@ -13,6 +13,9 @@ $Modules=@(
     "SLIN.State.ps1",
     "SLIN.Memory.ps1",
     "SLIN.Tone.ps1",
+    "SLIN.Reasoning.ps1",
+    "SLIN.Session.ps1",
+    "SLIN.Learning.ps1",
     "SLIN.Sensors.ps1",
     "SLIN.Diagnostics.ps1",
     "SLIN.SelfTest.ps1",
@@ -40,7 +43,7 @@ switch($Command.ToLowerInvariant()){
     "tone"      { Get-SLINTone | Format-List }
     "log"       { Get-SLINLog | Out-Host }
     "report"    { New-SLINHealthReport }
+    "version"   { Write-Host "SLIN 0.6.0" }
     "help"      { Show-SLINHelp }
-    "version"   { Write-Host "SLIN 0.5.0" }
     default     { Write-Error "Unknown command '$Command'. Run: SLIN help" }
 }
