@@ -36,7 +36,7 @@ function Get-SLINConversationResponse {
                 return "Belief stored: $($Matches[1]) = $($Matches[2].Trim())"
             }
         }
-        "identity" {return "I'm SLIN — a local Windows system with persistent memory, context, beliefs, reasoning, tone, learning, diagnostics, and self-tests."}
+        "identity" {return "I'm SLIN - a local Windows system with persistent memory, context, beliefs, reasoning, tone, learning, diagnostics, and self-tests."}
         "capabilities" {return "I can remember and recall information, track context, maintain beliefs and state, recognize intent and tone, learn observations, inspect Windows, and reason over local context."}
         "system" {
             if($text.ToLowerInvariant() -eq "status"){return (Show-SLINStatus|Out-String).Trim()}
