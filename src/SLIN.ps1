@@ -21,7 +21,8 @@ $Modules=@(
     "SLIN.Diagnostics.ps1",
     "SLIN.SelfTest.ps1",
     "SLIN.Report.ps1",
-    "SLIN.Chat.ps1"
+    "SLIN.Chat.ps1",
+    "SLIN.LocalModel.ps1"
 )
 
 foreach($module in $Modules){
@@ -44,7 +45,7 @@ switch($Command.ToLowerInvariant()){
     "tone"      { Get-SLINTone | Format-List }
     "log"       { Get-SLINLog | Out-Host }
     "report"    { New-SLINHealthReport }
-    "version"   { Write-Host "SLIN 0.7.0" }
+    "version"   { Write-Host "SLIN 0.8.0" }
     "help"      { Show-SLINHelp }
     default     { Write-Error "Unknown command '$Command'. Run: SLIN help" }
 }
