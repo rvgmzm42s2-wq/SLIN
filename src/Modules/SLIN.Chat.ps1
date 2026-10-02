@@ -17,10 +17,15 @@ function Get-SLINConversationResponse {
     if($lower -eq "sensors"){$response=(Get-SLINSensors|Format-Table -AutoSize|Out-String).Trim();Add-SLINConversationMessage -Role "assistant" -Text $response|Out-Null;return $response}
     if($lower -in @("help","commands","?")){$response="Commands: remember, recall, memory, state, status, diagnose, health, selftest, sensors, tone, exit. Normal messages go to the local language model.";Add-SLINConversationMessage -Role "assistant" -Text $response|Out-Null;return $response}
     if($lower -match "^state\s+set\s+(\S+)\s+(.+)$"){Set-SLINStateValue -Key $Matches[1] -Value $Matches[2].Trim()|Out-Null;$response="State updated: $($Matches[1]) = $($Matches[2].Trim())";Add-SLINConversationMessage -Role "assistant" -Text $response|Out-Null;return $response}
-    if(Test-SLINLocalModel){$response=Invoke-SLINLocalModel -Prompt (New-SLINModelPrompt -Text $text);if($response){Add-SLINConversationMessage -Role "assistant" -Text $response|Out-Null;return $response}}
-    $response=Get-SLINConversationalAnswer -Text $text -Reason $reason;Add-SLINConversationMessage -Role "assistant" -Text $response|Out-Null;return $response
+    if(Test-SLINLocalModel){
+        $response=Invoke-SLINLocalModel -Prompt (New-SLINModelPrompt -Text $text)
+        if($response){Add-SLINConversationMessage -Role "assistant" -Text $response|Out-Null;return $response}
+    }
+    $response="Silin local AI is unavailable right now. I am not switching to the fallback bot."
+    Add-SLINConversationMessage -Role "assistant" -Text $response|Out-Null
+    return $response
 }
 function Start-SLINChat {
-    Write-Host "";Write-Host "================================";Write-Host "          SILIN CHAT";Write-Host "================================";if(Test-SLINLocalModel){Write-Host "Local language model: ONLINE"}else{Write-Host "Local language model: OFFLINE - run setup-model.ps1"};Write-Host "Silin identity, memory, context, reasoning, tone, learning, and diagnostics are active.";Write-Host "Type help for commands or exit to leave.";Write-Host ""
+    Write-Host "";Write-Host "================================";Write-Host "          SILIN CHAT";Write-Host "================================";if(Test-SLINLocalModel){Write-Host "Local language model: ONLINE"}else{Write-Host "Local language model: OFFLINE - start the model setup"};Write-Host "Silin identity, memory, context, reasoning, tone, learning, and diagnostics are active.";Write-Host "Type help for commands or exit to leave.";Write-Host ""
     while($true){$inputText=Read-Host "You";if([string]::IsNullOrWhiteSpace($inputText)){continue};$response=Get-SLINConversationResponse -Text $inputText;if($response -eq "__EXIT__"){Write-Host "Silin: Conversation ended.";break};Write-Host "";Write-Host "Silin: $response";Write-Host ""}
 }
