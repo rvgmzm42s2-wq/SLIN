@@ -36,8 +36,8 @@ function Get-SLINConversationResponse {
                 return "Belief stored: $($Matches[1]) = $($Matches[2].Trim())"
             }
         }
-        "identity" {return "I'm SLIN — a local Windows runtime with persistent memory, state, reasoning, tone recognition, diagnostics, session tracking, and learning observations."}
-        "capabilities" {return "I can remember, recall, track context and beliefs, detect conversational intent and tone, record observations, inspect Windows, run diagnostics/self-tests, and maintain a persistent local session."}
+        "identity" {return "I'm SLIN — a local Windows system with persistent memory, context, beliefs, reasoning, tone, learning, diagnostics, and self-tests."}
+        "capabilities" {return "I can remember and recall information, track context, maintain beliefs and state, recognize intent and tone, learn observations, inspect Windows, and reason over local context."}
         "system" {
             if($text.ToLowerInvariant() -eq "status"){return (Show-SLINStatus|Out-String).Trim()}
             if($text.ToLowerInvariant() -eq "health"){return (Get-SLINHealth|Format-List|Out-String).Trim()}
@@ -49,11 +49,12 @@ function Get-SLINConversationResponse {
             if($text.ToLowerInvariant() -match "date|day"){return "Today is $(Get-Date -Format 'MMMM d, yyyy')."}
             return "It's $(Get-Date -Format 'h:mm:ss tt')."
         }
-        "emotion" {return "I picked up a $($reason.tone) tone. Keep going."}
+        "emotion" {return Get-SLINConversationalAnswer -Text $text -Reason $reason
+        }
     }
 
     if($text.ToLowerInvariant() -in @("help","commands","?")){
-        return "Commands: remember, recall, memory, state, state set, state belief, status, diagnose, health, selftest, sensors, tone, log, exit"
+        return "Commands: remember, recall, memory, state, state set, state belief, status, diagnose, health, selftest, sensors, tone, observations, log, exit"
     }
     if($text.ToLowerInvariant() -eq "memory"){
         $r=@(Get-SLINMemory|Select-Object -First 10)
@@ -65,10 +66,7 @@ function Get-SLINConversationResponse {
     if($text.ToLowerInvariant() -eq "log"){return (Get-SLINLog -Tail 20|Out-String).Trim()}
     if($text.ToLowerInvariant() -eq "observations"){return (Get-SLINObservations|Select-Object -First 20|Format-Table -AutoSize|Out-String).Trim()}
 
-    if($reason.tone -ne "neutral"){
-        return "I hear the $($reason.tone) tone. $text"
-    }
-    return "I hear you. $text"
+    return Get-SLINConversationalAnswer -Text $text -Reason $reason
 }
 
 function Start-SLINChat {
@@ -76,8 +74,8 @@ function Start-SLINChat {
     Write-Host "================================"
     Write-Host "          SLIN CHAT"
     Write-Host "================================"
-    Write-Host "Local conversation engine active."
-    Write-Host "Memory, state, reasoning, tone, learning, and diagnostics are available."
+    Write-Host "Local cognitive conversation engine active."
+    Write-Host "Memory, context, reasoning, tone, learning, and diagnostics are available."
     Write-Host "Type 'help' for commands or 'exit' to leave."
     Write-Host ""
 
